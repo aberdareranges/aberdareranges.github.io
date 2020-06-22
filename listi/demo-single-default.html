@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+
+<html class="no-js" lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive YouTube Player with Scrolling Thumbnail Playlist</title>
+    <style type="text/css">
+        body {
+            margin:16px;
+            padding: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            /*background-color: #111;*/
+        }
+        .wrapper {
+            width: 100%;
+            max-width: 960px;
+            margin: 0 auto;
+            /*padding: 15px;*/
+        }
+        .hdr {
+            margin: 20px 0 50px 0;
+        }
+        pre {
+            padding: 6px;
+            background: #e6f2ff;
+        }
+    </style>
+
+    <!-- 
+    MYLIST VIDEO GALLERY - <head> CONTENT
+    include css, settings and javascript in the head -->
+
+        <!-- MyList Styles -->
+        <link href="mylist-gallery/css/mylist-player.css" rel="stylesheet">
+
+        <!-- MyList Gallery SETTINGS -->
+        <script type="text/javascript">
+            var playListID = ["PLSSPBo7OVSZs96Cr6nEnzQpRDGwih38ie"]; // replace with your desired youtube playlist ID
+            var apiKey = "AIzaSyAn7fiusMZf59A1tfIS1Tip3fs3Vg6jiUc"; // this default YouTube API key will work but you should change it to your own
+            var autoPlayNext = 0; // auto play next video in list when current ends? 0 for no. 1 for yes.
+            var showPlayerControls = 1; // display YouTube video player controls? 0 for no. 1 for yes.
+            var showTitlesInList = 1; // display video titles under each thumbnail in playlist? 0 for no. 1 for yes.
+        </script>
+
+        <!-- jQuery -->
+        <!-- The MyList Video Gallery requires jQuery -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+        <!-- MyList Javascript -->
+        <script src="mylist-gallery/js/mylist-player.js" defer></script>
+
+</head>
+
+<body>
+    <div class="wrapper">
+
+        <div class="hdr">
+            <h1>DEMO: Single Playlist with Default Settings</h1>
+            <p>The MyList Video Gallery was made for creating a video gallery with multiple playlists. However, it is possible to only have one playlist as in this example. This is achieved simply by specifying a single playlist ID in the player settings.</p>
+        </div>  
+
+    <!-- 
+    MYLIST VIDEO GALLERY - <body> CONTENT
+    Include the following HTML in the <body> -->
+
+        <!-- THE PLAYLIST -->
+        <div id="player-container1" class="player-container">
+            <!-- Playlist Title - style this how you want using the '.player-container h3' class -->
+            <h3>Video Playlist Title</h3> 
+            <!-- left and right arrows -->
+            <div class="mlvp-arrows">
+                <div class="mlvp-arrow-left"><i class="demo-icon icon-left-open">&#xe800;</i></div>
+                <div class="mlvp-arrow-right"><i class="demo-icon icon-right-open">&#xe801;</i></div>
+            </div>
+            <!-- playlist thumbnails and titles -->
+            <div class="mlvp-list-container">
+                <div class="mlvp-list noselect" ></div>
+            </div>
+        </div>
+
+        <!-- THE YOUTUBE VIDEO PLAYER -->
+        <div class="mlvp-container">
+            <div class="mlvp-close"><img src="mylist-gallery/fonts/mlvp-close.svg" onClick="hide_mlvp();"></div>
+            <div id="vid_frame"></div>
+        </div>
+
+    <!-- 
+    // MYLIST GALLERY END -->
+
+
+        <p>View the page source code for helpful comments</p>
+        <br>&nbsp;
+
+    </div>
+</body>
+</html>

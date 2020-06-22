@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1">
+		<title>MyList Video Gallery - Documentation</title>
+		<style type="text/css">
+			body {
+				font-family: sans-serif;
+				color: #555;
+				margin:0;
+				padding:0;
+			}
+			h2, h3, h4 {
+				color: #000;
+				margin: 0;
+			}
+			h2 {
+				font-size: 28px;
+				line-height: 36px;
+				color: #ff7b3d;
+			}
+			h4 {
+				line-height: 30px;
+			}
+			.hdr {
+				background: #ff7b3d;
+				color: #fff;
+			}
+			.masthead {
+				padding: 40px 15px 50px 15px;
+			}
+			.container {
+				width: 100%;
+				max-width: 800px;
+				min-width: 300px;
+				margin: 0 auto;
+			}
+			h1 {
+				font-size: 36px;
+			}
+			.section {
+				margin-top: 80px;
+				padding: 0 15px 0 15px;
+			}
+			.section-title {
+				border-bottom: 1px solid #ddd;
+			}
+			.section-content {
+				margin-top: 32px;
+			}
+
+			.notes {
+				padding: 30px;
+				border: 1px solid #ddd;
+			}
+
+
+			pre {
+				overflow-x:auto;
+			}
+			.com { color: #93a1a1; }
+			.lit { color: #195f91; }
+			.pun, .opn, .clo { color: #93a1a1; }
+			.fun { color: #dc322f; }
+			.str, .atv { color: #D14; }
+			.kwd, .linenums .tag { color: #1e347b; }
+			.typ, .atn, .dec, .var { color: teal; }
+			.pln { color: #48484c; }
+
+			.prettyprint {
+			  padding: 8px;
+			  background-color: #f7f7f9;
+			  border: 1px solid #e1e1e8;
+			}
+			.prettyprint.linenums {
+			  -webkit-box-shadow: inset 40px 0 0 #fbfbfc, inset 41px 0 0 #ececf0;
+			     -moz-box-shadow: inset 40px 0 0 #fbfbfc, inset 41px 0 0 #ececf0;
+			          box-shadow: inset 40px 0 0 #fbfbfc, inset 41px 0 0 #ececf0;
+			}
+
+			/* Specify class=linenums on a pre to get line numbering */
+			ol.linenums {
+			  margin: 0 0 0 33px; /* IE indents via margin-left */
+			} 
+			ol.linenums li {
+			  padding-left: 12px;
+			  color: #bebec5;
+			  line-height: 18px;
+			  text-shadow: 0 1px 0 #fff;
+			}
+		</style>
+
+	</head>
+	<body onload="prettyPrint()">
+		<div class="hdr">
+			<div class="container">
+				<div class="masthead">
+					<h1 style="margin-bottom: 8px;">MyList Video Gallery 1.1</h1>
+					The responsive YouTube video gallery with scrolling thumbnail playlists
+				</div>
+			</div>
+		</div>
+
+		<div class="container">
+			<div class="section">
+				<div style="padding-bottom: 30px;">Thank you for purchasing the MyList Video Gallery! Below are the installation and configuration instructions. If you have any questions please email me at <a href="mailto:mike@woosterwebdesign.com">mike@woosterwebdesign.com</a></div>
+				<div class="section-title"><h2>Installation</h2></div>
+				<div class="section-content">
+					<h4>1. Upload the files to your webserver</h4>
+					Within the download folder is a folder called <strong>mylist-gallery</strong>. Upload that folder and all of its contents to your webserver.
+				</div>
+				<div class="section-content">
+					<h4>2. Include the necessary files </h4>
+					You will need to load jQuery, the mylist-player javascript file and the mylist-player css file. To do this, add the following code into the &lt;head&gt; portion of your webpage:
+					<pre class="prettyprint">
+&lt;!-- MyList Styles --&gt;
+&lt;link href=&quot;mylist-gallery/css/mylist-player.css&quot; rel=&quot;stylesheet&quot;&gt;
+
+&lt;!-- MyList Gallery Settings --&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+    // include a youtube playlist id for each playlist,
+    // place quotation marks around each and seperate by commas.
+    var playListID = [
+        &quot;PLSSPBo7OVSZsthvEQhtu2sZ1G9GUAnnZ7&quot;, 
+        &quot;PLSSPBo7OVSZu820GHiO3qjYRT2oL2V9wM&quot;, 
+        &quot;PLSSPBo7OVSZszs6coWD3nnAhJyVe_2drG&quot;
+    ];
+    var apiKey = &quot;AIzaSyAn7fiusMZf59A1tfIS1Tip3fs3Vg6jiUc&quot;;
+    var autoPlayNext = 1;
+    var showPlayerControls = 1;
+    var showTitlesInList = 1;
+&lt;/script&gt;
+
+&lt;!-- jQuery --&gt;
+&lt;!-- The MyList Video Gallery requires jQuery --&gt;
+&lt;script src=&quot;https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js&quot;&gt;&lt;/script&gt;
+
+&lt;!-- MyList Javascript --&gt;
+&lt;script src=&quot;mylist-gallery/js/mylist-player.js&quot; defer&gt;&lt;/script&gt;
+					</pre>
+					<div class="notes">
+						<strong>Notes</strong>
+						<ul>
+							<li>Double check that you don't already have the jQuery files included.</li>
+							<li>Ensure that you are loading mylist-player.js AFTER you load jQuery.</li>
+							<li>This code does not have to go in the &lt;head&gt;. It is common to place the CSS &lt;link&gt; in the &lt;head&gt; and the &lt;script&gt; elements just before the closing &lt;body&gt; tag.</li>
+						</ul>
+					</div>
+				</div>
+				<div class="section-content">
+					<h4>3. Add your YouTube playlist IDs</h4>
+					Copy and paste your desired YouTube playlist IDs into the MyList Gallery Settings section of the code you just pasted into the &lt;head&gt; portion of your webpage. 
+					<img src="assets/playlist-id.png" /><br />
+					<pre class="prettyprint">
+var playListID = [
+    &quot;PLSSPBo7OVSZsthvEQhtu2sZ1G9GUAnnZ7&quot;, 
+    &quot;PLSSPBo7OVSZu820GHiO3qjYRT2oL2V9wM&quot;, 
+    &quot;PLSSPBo7OVSZszs6coWD3nnAhJyVe_2drG&quot;
+];
+					</pre>
+
+				</div>
+				<div class="section-content">
+					<h4>4. Add the necessary HTML</h4>
+					<p><b>For The Playlists</b></p>
+					Include the following block of code within the <body> of your HTML code. Copy/paste for each playlist. The first playlist should have id="player-container1", the second should have id="player-container2", the third should have id="player-container3".
+					<pre class="prettyprint">
+&lt;div id=&quot;player-container1&quot; class=&quot;player-container&quot;&gt;
+    &lt;!-- Playlist Title - style this how you want using the '.player-container h3' class --&gt;
+    &lt;h3&gt;Video Playlist Title&lt;/h3&gt; 
+    &lt;!-- left and right arrows --&gt;
+    &lt;div class=&quot;mlvp-arrows&quot;&gt;
+        &lt;div class=&quot;mlvp-arrow-left&quot;&gt;&lt;i class=&quot;demo-icon icon-left-open&quot;&gt;&amp;#xe800;&lt;/i&gt;&lt;/div&gt;
+        &lt;div class=&quot;mlvp-arrow-right&quot;&gt;&lt;i class=&quot;demo-icon icon-right-open&quot;&gt;&amp;#xe801;&lt;/i&gt;&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;!-- playlist thumbnails and titles --&gt;
+    &lt;div class=&quot;mlvp-list-container&quot;&gt;
+        &lt;div class=&quot;mlvp-list noselect&quot; &gt;&lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+					</pre>
+
+					<p><b>For The Video Player</b></p>
+					Include the following block of code within the &lt;body&gt; of your HTML code. This is the code for the full-screen YouTube video player. This block of code should only appear once as it is shared by all of your playlists. 
+<pre class="prettyprint">
+&lt;div class=&quot;mlvp-container&quot;&gt;
+    &lt;div class=&quot;mlvp-close&quot;&gt;&lt;img src=&quot;mylist-gallery/fonts/mlvp-close.svg&quot; onClick=&quot;hide_mlvp();&quot;&gt;&lt;/div&gt;
+    &lt;div id=&quot;vid_frame&quot;&gt;&lt;/div&gt;
+&lt;/div&gt;
+</pre>
+					
+				</div>
+				<div class="section">
+					That's it! You're MyList Video Gallery is ready for prime time. Read on to see how to configure a few more options.
+				</div>
+			</div>
+
+			<div class="section">
+				<div class="section-title"><h2>Optional Settings</h2></div>
+				<div class="section-content">
+					There are a few optional settings for the player which can be changed in the MyList PLAYER SETTINGS section of the code you pasted into the &lt;head&gt; portion of your webpage:
+<pre class="prettyprint">
+&lt;!-- MyList PLAYER SETTINGS --&gt;
+&lt;script type="text/javascript"&gt;
+	// include a youtube playlist id for each playlist,
+    // place quotation marks around each and seperate by commas.
+    var playListID = [
+        &quot;PLSSPBo7OVSZsthvEQhtu2sZ1G9GUAnnZ7&quot;, 
+        &quot;PLSSPBo7OVSZu820GHiO3qjYRT2oL2V9wM&quot;, 
+        &quot;PLSSPBo7OVSZszs6coWD3nnAhJyVe_2drG&quot;
+    ];
+	var apiKey = "AIzaSyAn7fiusMZf59A1tfIS1Tip3fs3Vg6jiUc"; // this default YouTube API key will work but you should change it to your own
+	var autoPlayNext = 0; // auto play next video in list when current ends? 0 for no. 1 for yes.
+	var showPlayerControls = 1; // display YouTube video player controls? 0 for no. 1 for yes.
+	var showTitlesInList = 1; // display video titles under each thumbnail in playlist? 0 for no. 1 for yes.
+&lt;/script&gt;
+</pre>
+					
+					<p><strong>apiKey</strong><br />
+					The default YouTube API key will work but you should change it to your own. For help with obtaining an API key visit: <a href="https://developers.google.com/youtube/v3/getting-started#before-you-start">https://developers.google.com/youtube/v3/getting-started#before-you-start</a></p>
+
+					<p><strong>autoPlayNext</strong><br />
+					Do you want to auto play the next video in the list when the current ends? 0 for no. 1 for yes.</p>
+
+					<p><strong>showPlayerControls</strong><br />
+					Display YouTube video player controls? 0 for no. 1 for yes.</p>
+
+					<p><strong>showTitlesInList</strong><br />
+					Display video titles under each thumbnail in playlist? 0 for no. 1 for yes.</p>
+					
+				</div>
+			</div>
+
+			<div class="section">
+				<div class="section-title"><h2>Colors</h2></div>
+				<div class="section-content">
+					You can change default and hover state colors for the left and right arrows as well as colors for the titles that appear under each thumbnail in the playlist. Those colors are defined in the <strong>mylist-player.css</strong> file at the top under the COLORS section.
+<pre class="prettyprint lang-css">
+/*  COLORS 
+############################### */
+
+/* color of titles that appear  below 
+each thumbnail image in the playlist */
+.vid-item .desc {
+	color: #111;
+}
+
+.vid-item:hover .desc {
+	color: #CC181E;  /* <-- hover state color of titles */
+	-o-transition:.5s;
+  	-ms-transition:.5s;
+  	-moz-transition:.5s;
+  	-webkit-transition:.5s;
+  	transition:.5s;
+}
+
+/* color of playlist arrows */
+.mlvp-arrow-left, .mlvp-arrow-right {
+	color: #111;
+}
+
+/* hover color of playlist arrows */
+.mlvp-arrow-left:hover, .mlvp-arrow-right:hover {
+	color: #CC181E;
+}
+</pre>
+					
+				</div>
+			</div>
+
+
+			<div class="section">
+				<div class="section-title"><h2>Demos</h2></div>
+				<div class="section-content">
+					<p><a href="demo.html">Default Demo: Three playlists with default settings</a></p>
+					<p><a href="demo-dark.html">Dark Background</a></p>
+					<p><a href="demo-single-default.html">Single playlist</a></p>
+					Note: These demos may not work when testing them locally as the YouTube API really only works when serverd from a domain.
+
+					<p>&nbsp;</p>
+					
+				</div>
+			</div>
+
+			<div class="section">
+				<div class="section-title"><h2>Version History</h2></div>
+				<div class="section-content">					
+
+					<h4>Version  1.1 - 1/30/2020</h4>
+					<ul>
+						<li>Removed YouTube's "showinfo" parameter as it was depricated in 2018.<br><br>
+							From YouTube API doc's: The showinfo parameter, which indicates whether the player should display information like the video title and uploader before the video starts playing, is also being deprecated. Following the change, the channel avatar and video title will always display before playback begins, when playback is paused, and when playback ends. The avatar being displayed is new behavior that will be consistent across all embedded players.<br><br>
+						</li>
+						<li>Removed YouTube's "rel" parameter as it was changed in 2018.<br><br>
+							From YouTube doc's: The behavior for the rel parameter is changing on or after September 25, 2018. The effect of the change is that you will not be able to disable related videos. However, you will have the option of specifying that the related videos shown in the player should be from the same channel as the video that was just played. If the rel parameter is set to 0, the player will show related videos that are from the same channel as the video that was just played.
+						</li>
+					</ul>
+
+					<p>&nbsp;</p>
+
+					<h4>Version  1.0 - 5/12/2016</h4>
+					<ul>
+						<li>Initial launch</li>
+
+					</ul>
+
+					<p>&nbsp;</p>
+					
+				</div>
+			</div>
+
+
+
+
+		</div>
+	</body>
+
+	<script src="assets/prettify.js"></script> 
+
+</html>

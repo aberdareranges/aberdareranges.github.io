@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive YouTube Video Gallery with Scrolling Thumbnail Playlists</title>
+    <style type="text/css">
+        body {
+            margin:16px;
+            padding: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            /*background-color: #111;*/
+        }
+        .wrapper {
+            width: 100%;
+            max-width: 960px;
+            margin: 0 auto;
+            /*padding: 15px;*/
+        }
+        .hdr {
+            margin: 20px 0 50px 0;
+        }
+        pre {
+            overflow-x:auto;
+        }
+        .com { color: #93a1a1; }
+        .lit { color: #195f91; }
+        .pun, .opn, .clo { color: #93a1a1; }
+        .fun { color: #dc322f; }
+        .str, .atv { color: #D14; }
+        .kwd, .linenums .tag { color: #1e347b; }
+        .typ, .atn, .dec, .var { color: teal; }
+        .pln { color: #48484c; }
+
+        .prettyprint {
+          padding: 8px;
+          background-color: #f7f7f9;
+          border: 1px solid #e1e1e8;
+        }
+        .prettyprint.linenums {
+          -webkit-box-shadow: inset 40px 0 0 #fbfbfc, inset 41px 0 0 #ececf0;
+             -moz-box-shadow: inset 40px 0 0 #fbfbfc, inset 41px 0 0 #ececf0;
+                  box-shadow: inset 40px 0 0 #fbfbfc, inset 41px 0 0 #ececf0;
+        }
+
+        /* Specify class=linenums on a pre to get line numbering */
+        ol.linenums {
+          margin: 0 0 0 33px; /* IE indents via margin-left */
+        } 
+        ol.linenums li {
+          padding-left: 12px;
+          color: #bebec5;
+          line-height: 18px;
+          text-shadow: 0 1px 0 #fff;
+        }
+
+    </style>
+
+    <!-- 
+    MYLIST VIDEO GALLERY - <head> CONTENT
+    include css, settings and javascript in the head -->
+
+        <!-- MyList Styles -->
+        <link href="mylist-gallery/css/mylist-player.css" rel="stylesheet">
+
+        <!-- MyList Gallery Settings -->
+        <script type="text/javascript">
+            // include the youtube playlist id for each playlist
+            // place quotation marks around each and seperate by comma
+            var playListID = [
+                "PLSSPBo7OVSZsthvEQhtu2sZ1G9GUAnnZ7", 
+                "PLSSPBo7OVSZu820GHiO3qjYRT2oL2V9wM", 
+                "PLSSPBo7OVSZszs6coWD3nnAhJyVe_2drG"
+            ];
+            var apiKey = "AIzaSyAn7fiusMZf59A1tfIS1Tip3fs3Vg6jiUc";
+            var autoPlayNext = 1;
+            var showPlayerControls = 1;
+            var showTitlesInList = 1;
+        </script>
+
+        <!-- jQuery -->
+        <!-- The MyList Video Gallery requires jQuery -->
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+        <!-- MyList Javascript -->
+        <script src="mylist-gallery/js/mylist-player.js" defer></script>
+
+</head>
+
+<body onload="prettyPrint()">
+    <div class="wrapper">
+
+        <div class="hdr">
+            <h1>DEMO: Three Playlists with Default Settings</h1>
+            Here we have three playlists with default settings. 
+            <!-- <p>Specify a YouTube playlist ID for each playlist you want on the page (see the "MyList Gallery Settings" section in this page's source code. Include the Playlist block of HTML in the &lt;body&gt; section of your page. Copy and paste the Playlist block for each playlist and specify id="player-container1" for the first, "player-container2" for the second, and "player-container3" for the third.</p> -->
+        </div>  
+
+    <!-- 
+    MYLIST VIDEO GALLERY - <body> CONTENT
+    Include the following HTML in the <body> -->
+
+        <!-- THE FIRST PLAYLIST -->
+        <div id="player-container1" class="player-container">
+            <!-- Playlist Title - style this how you want using the '.player-container h3' class -->
+            <h3>Video Playlist Title</h3> 
+            <!-- left and right arrows -->
+            <div class="mlvp-arrows">
+                <div class="mlvp-arrow-left"><i class="demo-icon icon-left-open">&#xe800;</i></div>
+                <div class="mlvp-arrow-right"><i class="demo-icon icon-right-open">&#xe801;</i></div>
+            </div>
+            <!-- playlist thumbnails and titles -->
+            <div class="mlvp-list-container">
+                <div class="mlvp-list noselect" ></div>
+            </div>
+        </div>
+
+        <!-- THE SECOND PLAYLIST -->
+        <div id="player-container2" class="player-container">
+            <!-- Playlist Title - style this how you want using the '.player-container h3' class -->
+            <h3>Video Playlist Title</h3> 
+            <!-- left and right arrows -->
+            <div class="mlvp-arrows">
+                <div class="mlvp-arrow-left"><i class="demo-icon icon-left-open">&#xe800;</i></div>
+                <div class="mlvp-arrow-right"><i class="demo-icon icon-right-open">&#xe801;</i></div>
+            </div>
+            <!-- playlist thumbnails and titles -->
+            <div class="mlvp-list-container">
+                <div class="mlvp-list noselect" ></div>
+            </div>
+        </div>
+
+        <!-- THE THIRD PLAYLIST -->
+        <div id="player-container3" class="player-container">
+            <!-- Playlist Title - style this how you want using the '.player-container h3' class -->
+            <h3>Video Playlist Title</h3> 
+            <!-- left and right arrows -->
+            <div class="mlvp-arrows">
+                <div class="mlvp-arrow-left"><i class="demo-icon icon-left-open">&#xe800;</i></div>
+                <div class="mlvp-arrow-right"><i class="demo-icon icon-right-open">&#xe801;</i></div>
+            </div>
+            <!-- playlist thumbnails and titles -->
+            <div class="mlvp-list-container">
+                <div class="mlvp-list noselect" ></div>
+            </div>
+        </div>
+
+        <!-- THE YOUTUBE VIDEO PLAYER -->
+        <div class="mlvp-container">
+            <div class="mlvp-close"><img src="mylist-gallery/fonts/mlvp-close.svg" onClick="hide_mlvp();"></div>
+            <div id="vid_frame"></div>
+        </div>
+
+    <!-- 
+    // MYLIST GALLERY END -->
+
+
+        <p>View the page source code for helpful comments</p>
+        <br>&nbsp;
+
+<h3>MyList Video Gallery CSS, Javascript and Settings</h3>
+Include the following block of code within the &lt;head&gt; portion of your HTML code. Swap in your desired YouTube playlist IDs in the "var playListID =" in the "MyList Gallery Settings" section. Playlist IDs should be in quotes and seperated by commas.
+<pre class="prettyprint">
+&lt;!-- MyList Styles --&gt;
+&lt;link href=&quot;mylist-gallery/css/mylist-player.css&quot; rel=&quot;stylesheet&quot;&gt;
+
+&lt;!-- MyList Gallery Settings --&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+    // include the youtube playlist id for each playlist
+    // place quotation marks around each and seperate by comma
+    var playListID = [
+        &quot;PLSSPBo7OVSZsthvEQhtu2sZ1G9GUAnnZ7&quot;, 
+        &quot;PLSSPBo7OVSZu820GHiO3qjYRT2oL2V9wM&quot;, 
+        &quot;PLSSPBo7OVSZszs6coWD3nnAhJyVe_2drG&quot;
+    ];
+    var apiKey = &quot;AIzaSyAn7fiusMZf59A1tfIS1Tip3fs3Vg6jiUc&quot;;
+    var autoPlayNext = 1;
+    var showPlayerControls = 1;
+    var showTitlesInList = 1;
+&lt;/script&gt;
+
+&lt;!-- jQuery --&gt;
+&lt;!-- The MyList Video Gallery requires jQuery --&gt;
+&lt;script src=&quot;http://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js&quot;&gt;&lt;/script&gt;
+
+&lt;!-- MyList Javascript --&gt;
+&lt;script src=&quot;mylist-gallery/js/mylist-player.js&quot; defer&gt;&lt;/script&gt;
+</pre>
+
+<h3>The Playlist</h3>
+Include the following block of code within the &lt;body&gt; of your HTML code. Copy/paste for each playlist. The first playlist should have id="player-container1", the second should have id="player-container2", the third should have id="player-container3".
+<pre class="prettyprint">
+&lt;div id=&quot;player-container1&quot; class=&quot;player-container&quot;&gt;
+    &lt;!-- Playlist Title - style this how you want using the '.player-container h3' class --&gt;
+    &lt;h3&gt;Video Playlist Title&lt;/h3&gt; 
+    &lt;!-- left and right arrows --&gt;
+    &lt;div class=&quot;mlvp-arrows&quot;&gt;
+        &lt;div class=&quot;mlvp-arrow-left&quot;&gt;&lt;i class=&quot;demo-icon icon-left-open&quot;&gt;&amp;#xe800;&lt;/i&gt;&lt;/div&gt;
+        &lt;div class=&quot;mlvp-arrow-right&quot;&gt;&lt;i class=&quot;demo-icon icon-right-open&quot;&gt;&amp;#xe801;&lt;/i&gt;&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;!-- playlist thumbnails and titles --&gt;
+    &lt;div class=&quot;mlvp-list-container&quot;&gt;
+        &lt;div class=&quot;mlvp-list noselect&quot; &gt;&lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+</pre>
+
+<h3>The YouTube Player</h3>
+Include the following block of code within the &lt;body&gt; of your HTML code. This is the code for the full-screen YouTube video player. This block of code should only appear once as it is shared by all of your playlists. 
+<pre class="prettyprint">
+&lt;div class=&quot;mlvp-container&quot;&gt;
+    &lt;div class=&quot;mlvp-close&quot;&gt;&lt;img src=&quot;mylist-gallery/fonts/mlvp-close.svg&quot; onClick=&quot;hide_mlvp();&quot;&gt;&lt;/div&gt;
+    &lt;div id=&quot;vid_frame&quot;&gt;&lt;/div&gt;
+&lt;/div&gt;
+</pre>
+
+    <br>&nbsp;
+    </div>
+
+
+<script src="assets/prettify.js"></script>
+
+</body>
+</html>
